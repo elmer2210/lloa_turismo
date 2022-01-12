@@ -12,12 +12,13 @@ const morgan = require("morgan");
 const multer = require('multer');
 const { now } = require("mongoose");
 
+//Storage de imagen
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/img/img_uploads'),
     filename: (req, file, cb)=>{
         let ext = path.extname(file.originalname);
         ext = ext.length > 1 ? ext : '.' + mime.extension(file.mimetype);
-        const fileName = file.fieldname + Date.now() + ext;
+        const fileName = `${req.user.user_name}-${file.fieldname}-${Date.now()}-${ext}`;
         cb(null, fileName)
     }
 });
@@ -53,9 +54,19 @@ app.use(methodOverride('_method'));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(morgan('dev'))
-app.use(express.json());    
+app.use(express.json()); 
+
+//Guardamos la imagen
 app.use(multer({
     storage:storage,
+    fileFilter:(req, file, callback)=>{
+        let ext = path.extname(file.originalname);
+        if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
+            return callback(new Error('Only images are allowed'))
+        } else {
+            callback(null, true)
+        }
+    },
     dest: path.join(__dirname, 'public/img/img_uploads')
 }).single('image'));
 
