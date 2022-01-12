@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/css/blog.css">
+<div class="container">
+    <h2 class="text-center">Blogs LLOA </h2>
+    <div class="row">
+        <h5><a class="btn btn-link" href="/blog/add">Crear un blog nuevo</a></h5>
+        {{#each blog}}
+            <div class="col-xl-4">
+                <div class="card m-4">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">{{title}}</h3>
+                        <hr>
+                        <p class="card-text">{{resumen}}</p>
+                        <div class="blogImg">
+                            <img src="/img/img_uploads/{{image}}" class="imgBlog" alt="">
+                        </div>
+                        <a href="/blog/show/{{id}}">Leer mas...</a>
+                    </div>
+                    <div class="card-footer text-muted text-center">
+                        {{timeago create_at}}
+                       <div class="row">
+                           <div class="col d-flex justify-content-center">
+                                <a href="/blog/delete/{{id}}" class="btn btn-danger ">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                        
+                           </div>
+                           <div class="col d-flex justify-content-center">
+                               <a href="/blog/edit/{{id}}" class="btn btn-secondary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+       
+        {{else}}
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">No existe registro aún</h4>
+                </div>
+                <a href="/blog/create" class="btn btn-link"></a>
+            </div>
+        {{/each}}
+    </div>
+</div>

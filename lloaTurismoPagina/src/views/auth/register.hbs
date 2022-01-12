@@ -1,0 +1,47 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>Registro de Usuario</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/signup" method="POST">
+                        <label for="" class="form-label">Nombre y Apellido</label>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" class="form-control" name="first_name" placeholder="Nombre" aria-label="Nombre" autofocus>
+                                </div>
+                                <div class="col">
+                                    <input type="text " class="form-control" name="last_name" placeholder="Apellido" aria-label="Apellido">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="" class="form-labe">Usuario</label>
+                                    <input type="text" class="form-control" name="user_name" placeholder="exampleName1234">
+                                </div>
+                                <div class="col">
+                                    <label for="" class="form-labe">Contraseña</label>
+                                    <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-labe">Email</label>
+                            <input type="email" class="form-control" name="user_email" placeholder="example@email.com">
+                        </div> 
+                        <div class="mb-3">
+                            <button class="btn btn-success btn-block">
+                                Registrarse
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

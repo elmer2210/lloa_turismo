@@ -1,0 +1,80 @@
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x:hidden 
+} 
+
+body{
+
+    font-family: 'Raleway', sans-serif;
+}
+
+#logo{
+    align-content: center;
+    width: 80px;
+    height: 70px
+}
+
+nav{
+    background: #a8ff78;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.footer{
+    width: 100%;
+}
+
+footer {
+    max-width: 100%;
+    min-width: 300px;
+    padding: 60px 0px;
+    background: #a8ff78;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+h4 {
+    color: #0e0c1d;
+    font-weight: 700;
+}
+
+.footer-top {
+    padding-bottom: 50px;
+}
+
+.footer-top .fa {
+    font-size: 27px;
+    color: #fff;
+}
+
+.footer-top a {
+    color: #FFF;
+    padding: 25px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #59C173;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5D26C1, #a17fe0, #59C173);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5D26C1, #a17fe0, #59C173); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.footer-top a:hover{
+    filter: brightness(0.9);
+}
+
+.copyright {
+    background-color: #f0f0f0;
+}
+
+.copyright p {
+    font-size: 12px;
+    padding: 15px 0 10px 0;
+}
+
