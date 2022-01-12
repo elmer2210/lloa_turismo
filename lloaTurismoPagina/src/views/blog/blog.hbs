@@ -1,3 +1,23 @@
-<div class="container">
-    
+<link rel="stylesheet" href="/css/blog.css">
+<div class="container mx-auto">
+    <div class="p-2 mx-auto text-dark container_blog">
+        <div class="card p-5" style="background-color: transparent; border-style: none;">
+            <div class="card-body">
+                <h3 class="card-title text-center">{{blog.title}}</h3>
+                <hr>
+                <p class="card-text">{{blog.text}}</p>
+                <div class="row">
+                    <div class="col-sm-6 mx-auto">
+                        <img class="card-img-top img-fluid" src="/img/img_uploads/{{blog.image}}" style="border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{#if user}}
+        <a href="/blog/show" class="link-success">Regresar</a>
+    {{else}}
+        <a href="/blog" class="link-success">Regresar</a>
+    {{/if}}
 </div>
+

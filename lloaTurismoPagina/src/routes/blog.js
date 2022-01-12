@@ -36,11 +36,11 @@ router.get('/show', isLoggedIn, async(req, res)=>{
     res.render('blog/show', {blog})
 });
 
-router.get('/show/:id', isLoggedIn, async(req, res)=>{
+router.get ('/individual/:id', async(req, res)=>{
     const {id} = req.params;
-    const blog = pool.query('SELECT * FROM blog WHERE id =?', [id] );
-    res.render('blog/blog', {blog:blog[0]})
-})
+    const blog = await pool.query('SELECT * FROM blog WHERE id = ?', [id]);
+    res.render('blog/blog', {blog:blog[0]} );
+});
 
 router.get ('/edit/:id',isLoggedIn, async(req, res)=>{
     const {id} = req.params;

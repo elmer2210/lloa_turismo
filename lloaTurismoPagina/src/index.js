@@ -10,8 +10,6 @@ const passport = require('passport')
 const {database} = require('./keys');
 const morgan = require("morgan");
 const multer = require('multer');
-const { now } = require("mongoose");
-
 //Storage de imagen
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/img/img_uploads'),

@@ -4,42 +4,38 @@
     <div class="row">
         <h5><a class="btn btn-link" href="/blog/add">Crear un blog nuevo</a></h5>
         {{#each blog}}
-            <div class="col-xl-4">
-                <div class="card m-4">
-                    <div class="card-body">
-                        <a href="/blog/show/{{id}}"><i class="far fa-eye"></i></a>
-                        <h3 class="card-title text-center">{{title}}</h3>
-                        <hr>
-                        <p class="card-text">{{resumen}}</p>
-                        <div class="blogImg">
-                            <img src="/img/img_uploads/{{image}}" class="imgBlog" alt="">
-                        </div>
+            <div class="row g-0 bg-light position-relative">
+                <div class="col-md-4 mb-md-0 p-md-4">
+                    <img src="/img/img_uploads/{{image}}" class="imgBlog" alt="">
+                </div>
+                <div class="col-md-6 p-4 ps-md-0">
+                    <h5 class="mt-0">{{title}}</h5>
+                    <p>{{resumen}}</p>
+                </div>
+                <div class="col-md-2 p-4 ps-md-0 justify-content-center" style="">
+                    <div class="row p-1">
+                        <a href="/blog/individual/{{id}}" class="btn btn-info">
+                            <i class="far fa-eye"></i>
+                        </a>
                     </div>
-                    <div class="card-footer text-muted text-center">
-                        {{timeago create_at}}
-                       <div class="row">
-                           <div class="col d-flex justify-content-center">
-                                <a href="/blog/delete/{{id}}" class="btn btn-danger ">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
-                        
-                           </div>
-                           <div class="col d-flex justify-content-center">
-                               <a href="/blog/edit/{{id}}" class="btn btn-secondary">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                           </div>
-                       </div>
+                    <div class="row p-1">
+                        <a href="/blog/edit/{{id}}" class="btn btn-secondary">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </div>
+                    <div class="row p-1">
+                        <a href="/blog/delete/{{id}}" class="btn btn-danger ">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-       
         {{else}}
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">No existe registro aún</h4>
                 </div>
-                <a href="/blog/create" class="btn btn-link"></a>
+                <a href="/blog/add" class="btn btn-link">Crear mi primer blog</a>
             </div>
         {{/each}}
     </div>

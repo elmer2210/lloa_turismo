@@ -22,3 +22,21 @@
     height: 100%;
     border-radius: 10px;
 }
+/*1000px*****/
+.container_blog{
+    margin: 20px;
+    max-width: 80%;
+    height: auto;
+    background-image: url("../img/volcan_pichincha.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.cardBlog{
+    border-width: 3px;
+    border-color: hsl(99, 47%, 54%);
+    border-style: solid;
+    margin: 10px;
+    border-radius: 10px;
+    width: 80%;
+}

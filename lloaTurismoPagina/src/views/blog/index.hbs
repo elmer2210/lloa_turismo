@@ -1,29 +1,19 @@
 <link rel="stylesheet" href="/css/blog.css">
 <div class="container">
     <h1 class="title">Blogs LLOA </h1>
-    <div class="row">
+    <div class="row mx-auto">
         {{#each blogs}}
-            <div class="col-xl-4">
-                <div class="card m-4">
-                    <div class="card-body">
-                        <img src="{{image}}" alt="">
-                        <h3 class="card-title text-center">{{title}}</h3>
-                        <hr>
-                        <p class="card-text">{{resumen}}</p>
-                            <a href="/blog/show/{{id}}">Leer mas...</a>
-                    </div>
-                    <div class="card-footer text-muted text-center">
-                        {{timeago create_at}}
-                    </div>
+            <div class="row g-0 bg-light position-relative cardBlog mx-auto">
+                <div class="col-md-4 mb-md-0 p-md-4">
+                    <img src="/img/img_uploads/{{image}}" class="imgBlog" alt="">
+                    <br>
+                    Created {{timeago create_at}}
                 </div>
-            </div>
-       
-        {{else}}
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">No existe registro aún</h4>
+                <div class="col-md-8 p-4 ps-md-0">
+                    <h5 class="mt-0">{{title}}</h5>
+                    <p>{{resumen}}</p>
+                    <a href="/blog/individual/{{id}}" class="link-success">Leer mas...</a>
                 </div>
-                <a href="/blog/create" class="btn btn-link"></a>
             </div>
         {{/each}}
     </div>
