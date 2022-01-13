@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Poppins:wght@400;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cardNew{
+    border-width: 3px;
+    border-color: hsl(204, 75%, 42%);
+    border-style: solid;
+    margin: 10px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.container_new{
+    margin: 20px;
+    max-width: 80%;
+    height: auto;
+    background-image: url("../img/periodico.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 10px;
+}

@@ -3,42 +3,53 @@
 
 <div class="container p-4">
     <div class="row">
-        <h5><a class="btn btn-link" href="/blog/add">Crear nuevo blog</a></h5>
-        <div class="col-md-4 mx-auto">
+        <h5><a class="btn btn-link" href="/blog/add">Editar blog</a></h5>
+        <div class="col-md-8 mx-auto">
             <div class="card">
                 <img class="card-img-top" src="holder.js/100x180/" alt="">
                 <div class="card-body">
                     <form action="/blog/edit/{{blog.id}}" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
-                            <label for="" class="form-label">Titulo</label>
-                            <input type="text" name="title" id="" class="form-control" value="{{blog.title}}" placeholder="Titulo del blog" autofocus>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="" class="form-label">Titulo</label>
+                                    <input type="text" name="title" class="form-control" value="{{blog.title}}" placeholder="Titulo del blog" autofocus>
+                                </div>
+                                <div class="col">
+                                    <label for="" class="form-label">Photo</label>
+                                    <input type="file" name="image" class="form-control" placeholder="Eleccione un imagen" required>
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Resumen</label>
-                            <textarea type="text" name="resumen" id="" class="form-control" placeholder="Resumen del contenido" rows="2" >{{blog.resumen}}</textarea>
+                            <textarea type="text" name="resumen" id="resumen" onkeyup="countChars(this);" class="form-control" placeholder="Resumen del contenido" maxlength="1000" rows="6" >{{blog.resumen}}</textarea>
+                            <b><p id="charNum">0/1000 caracteres</p></b>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Conternido</label>
-                            <textarea type="text" name="text" id="" class="form-control" placeholder="Contenido del blog" rows="3" >{{blog.text}}</textarea>
+                            <textarea type="text" name="text" id="" class="form-control" placeholder="Contenido del blog" rows="10" >{{blog.text}}</textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Photo</label>
-                            <input type="file" name="image" id="" class="form-control" placeholder="Eleccione un imagen" required>
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-success btn-block">
-                              Guardar
+                            <button type="submit" class="btn btn-success ">
+                              Editar
                             </button>
                         </div>
                     </form>
                 </div>
-                <div class="card-footer">
-                    <div class="blogImg">
-                            <img src="/img/img_uploads/{{blog.image}}" class="imgBlog" alt="">
-                    </div>
+                <div class="card-footer text-center" style="height: auto;">
+                    <img src="/img/img_uploads/{{blog.image}}" class="img-fluid mx-auto" alt="">
                 </div>
             </div>
         </div>
         <h5><a class="btn btn-link" href="/blog/show">Regresar</a></h5>
     </div>
 </div>
+
+<script>
+    function countChars(obj){
+        var maxLength = 1000;
+        var strLength = obj.value.length;
+        document.getElementById("charNum").innerHTML = strLength+'/'+maxLength+' caracteres';
+    }
+</script>

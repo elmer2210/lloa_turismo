@@ -5,8 +5,4 @@ router.get('/', (req, res) => {
     res.render('components/index');
 })
 
-router.get('/gallery', (req, res) => {
-    res.render('components/gallery');
-})
-
 module.exports = router;

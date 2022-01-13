@@ -10,6 +10,8 @@ const passport = require('passport')
 const {database} = require('./keys');
 const morgan = require("morgan");
 const multer = require('multer');
+const e = require("connect-flash");
+
 //Storage de imagen
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/img/img_uploads'),
@@ -79,8 +81,9 @@ app.use((req, res, next)=>{
 //Routes
 app.use(require('./routes/index'));
 app.use(require('./routes/authentication'));
-app.use(require('./routes/gallery'));
-app.use('/blog', require('./routes/blog'))
+app.use('/gallery',require('./routes/gallery'));
+app.use('/blog', require('./routes/blog'));
+app.use('/new', require('./routes/new'));
 
 //Static File
 app.use(express.static(path.join(__dirname, 'public')));

@@ -1,0 +1,50 @@
+
+<div class="container">
+    <h1 class="title text-center">Noticias y Eventos LLOA </h1>
+    <br>
+    <a href="/new/add" class="link-primary">Crear un evento/noticia nuevo</a>
+    <div class="row mx-auto">
+        {{#each news}}
+            <div class="row g-0 bg-light position-relative mx-auto border boder-2 border-info rounded m-4">
+                <br>
+                {{#isActived status}}{{/isActived}}
+                <br>
+                <div class="col-md-4 mb-md-0 p-md-4">
+                    <img src="/img/img_uploads/{{image}}" class="img-fluid" alt="">
+                    <br>
+                   
+                </div>
+                <div class="col-md-6 p-4 ps-md-0">
+                    <h5 class="mt-0">{{title_new}}</h5>
+                    <p class="text-truncate" style="width: 100%;">
+                        {{text}}
+                    </p>
+                    <br><br>
+                    <p><b>Fecha Evento:</b> {{dateFormat event_date}} </p>
+                </div>
+                <div class="col-md-2 p-4 ps-md-0 justify-content-center" style="">
+                    <div class="row p-1">
+                        <a href="/new/individual/{{id}}" class="btn btn-info">
+                            <i class="far fa-eye"></i>
+                        </a>
+                    </div>
+                    <div class="row p-1">
+                        <a href="/new/edit/{{id}}" class="btn btn-secondary">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </div>
+                    <div class="row p-1">
+                        <a href="/new/delete/{{id}}" class="btn btn-danger ">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                    <div class="row p-1">
+                        <a href="/new/statusChange/{{id}}" class="btn btn-warning ">
+                            Cambiar estado
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

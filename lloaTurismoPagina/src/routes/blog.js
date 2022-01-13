@@ -6,8 +6,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const {isLoggedIn, isNotLoggedIn} = require('../lib/auth')
 
-//routes 
-
+//routes get 
 router.get('/', isNotLoggedIn,async (req, res)=>{
     const blogs = await pool.query('SELECT * FROM blog ORDER BY `create_at` DESC');
     res.render('blog/index', {blogs});
@@ -15,20 +14,6 @@ router.get('/', isNotLoggedIn,async (req, res)=>{
 
 router.get('/add', isLoggedIn ,(req, res)=>{
     res.render('blog/create')
-});
-
-router.post('/add', isLoggedIn, async(req, res)=>{
-    const {title, resumen, text, image} = req.body;
-    const newBlog = {
-        title,
-        resumen,
-        text,
-        image:req.file.filename,
-        create_for:req.user.id
-    };
-    await pool.query('INSERT INTO blog set ?', [newBlog])
-    req.flash('success', 'Blog creado satisfactoriamente');
-    res.redirect('/blog/show')
 });
 
 router.get('/show', isLoggedIn, async(req, res)=>{
@@ -46,30 +31,6 @@ router.get ('/edit/:id',isLoggedIn, async(req, res)=>{
     const {id} = req.params;
     const blog = await pool.query('SELECT * FROM blog WHERE id = ?', [id]);
     res.render('blog/edit', {blog:blog[0]} );
-});
-
-router.post('/edit/:id', isLoggedIn, async(req, res)=>{
-    const {id} = req.params;
-    const blog = await pool.query('SELECT * FROM blog WHERE id = ?',[id] );
-    const {title, resumen, text, image} = req.body;
-        const updateBlog = {
-            title,
-            resumen,
-            text,
-            image:req.file.filename,
-        };
-    if (blog[0].image !== null) {
-        fs.unlink( path.join(__dirname, `../public/img/img_uploads/${blog[0].image}`))
-            .then(()=>{
-                console.log('images was removed')
-            }).catch(err=>{
-                console.error('Something wrong happened removing the file', err)
-            })
-    };
-    console.log(updateBlog)
-    await pool.query('UPDATE blog SET ? WHERE id = ?', [updateBlog, id])
-    req.flash('success', 'Blog actualizado correctamentes')
-    res.redirect('/blog/show')
 });
 
 router.get('/delete/:id', isLoggedIn, async(req, res)=>{
@@ -91,6 +52,44 @@ router.get('/delete/:id', isLoggedIn, async(req, res)=>{
     } else {
         req.flash('message', 'No se encuentra el blog que desea eliminar')
     }
+});
+
+//routes post
+router.post('/add', isLoggedIn, async(req, res)=>{
+    const {title, resumen, text, image} = req.body;
+    const newBlog = {
+        title,
+        resumen,
+        text,
+        image:req.file.filename,
+        create_for:req.user.id
+    };
+    await pool.query('INSERT INTO blog set ?', [newBlog])
+    req.flash('success', 'Blog creado satisfactoriamente');
+    res.redirect('/blog/show')
+});
+
+router.post('/edit/:id', isLoggedIn, async(req, res)=>{
+    const {id} = req.params;
+    const blog = await pool.query('SELECT * FROM blog WHERE id = ?',[id] );
+    const {title, resumen, text, image} = req.body;
+        const updateBlog = {
+            title,
+            resumen,
+            text,
+            image:req.file.filename,
+        };
+    if (blog[0].image !== null) {
+        fs.unlink( path.join(__dirname, `../public/img/img_uploads/${blog[0].image}`))
+            .then(()=>{
+                console.log('images was removed')
+            }).catch(err=>{
+                console.error('Something wrong happened removing the file', err)
+            })
+    };
+    await pool.query('UPDATE blog SET ? WHERE id = ?', [updateBlog, id])
+    req.flash('success', 'Blog actualizado correctamentes')
+    res.redirect('/blog/show')
 });
 
 module.exports = router;

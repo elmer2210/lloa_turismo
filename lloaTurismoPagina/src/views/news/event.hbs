@@ -1,16 +1,16 @@
-<link rel="stylesheet" href="/css/blog.css">
+<link rel="stylesheet" href="/css/new.css">
 <div class="container mx-auto">
-    <div class="p-2 mx-auto text-dark container_blog">
+    <div class="p-2 mx-auto text-dark container_new">
         <div class="row">
             <div class="col-10 mx-auto">
-                 <div class="card m-5">
+                <div class="card m-5" >
                     <div class="card-body">
-                        <h3 class="card-title text-center">{{blog.title}}</h3>
+                        <h3 class="card-title text-center">{{new.title_new}}</h3>
                         <hr>
-                        <p class="card-text">{{blog.text}}</p>
+                        <p class="card-text">{{new.text}}</p>
                         <div class="row">
                             <div class="col-sm-6 mx-auto">
-                                <img class="card-img-top img-fluid" src="/img/img_uploads/{{blog.image}}" style="border-radius: 10px;">
+                                <img class="card-img-top img-fluid" src="/img/img_uploads/{{new.image}}" style="border-radius: 10px;">
                             </div>
                         </div>
                     </div>
@@ -22,16 +22,16 @@
     <div class="row ">
         {{#if user}}
             <div class="col">
-                <a href="/blog/show" class="link-success">Regresar</a>
+                <a href="/new/show" class="link-success">Regresar</a>
             </div>
             <div class="col text-end">
-                <a href="/blog/edit/{{blog.id}}" class="link-success">Editar</a>
+                <a href="/new/edit/{{new.id}}" class="link-success">Editar</a>
             </div>
         {{else}}
             <div class="col">
-                <a href="/blog" class="link-success">Regresar</a>
+                <a href="/new" class="link-success">Regresar</a>
             </div>
         {{/if}}
     </div>
+    
 </div>
-

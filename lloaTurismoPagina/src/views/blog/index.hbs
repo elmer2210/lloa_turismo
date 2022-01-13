@@ -5,15 +5,18 @@
         {{#each blogs}}
             <div class="row g-0 bg-light position-relative cardBlog mx-auto">
                 <div class="col-md-4 mb-md-0 p-md-4">
-                    <img src="/img/img_uploads/{{image}}" class="imgBlog" alt="">
+                    <img src="/img/img_uploads/{{image}}" class="img-fluid" alt="">
                     <br>
-                    Created {{timeago create_at}}
+                   
                 </div>
                 <div class="col-md-8 p-4 ps-md-0">
                     <h5 class="mt-0">{{title}}</h5>
                     <p>{{resumen}}</p>
                     <a href="/blog/individual/{{id}}" class="link-success">Leer mas...</a>
                 </div>
+                <p class="m-2">
+                    Created {{timeago create_at}}
+                </p>
             </div>
         {{/each}}
     </div>

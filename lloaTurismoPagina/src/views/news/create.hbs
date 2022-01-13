@@ -1,0 +1,51 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center"> <b>Crear un Evento/Noticia nuevo</b> </h5>
+                    <form action="/new/add" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="" class="form-label">Titulo del evento</label>
+                                    <input type="text" name="title_new" placeholder="Titulo del evento/noticia" class="form-control" autofocus>
+                                </div>
+                                <div class="col">
+                                    <label for="" class="form-label">Imagen referencial</label>
+                                    <input type="file" name="image" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="" class="form-label">Fecha de evento</label>
+                                    <input type="date" name="event_date" class="form-control">
+                                </div>
+                                <div class="col">
+                                    <label for="" class="form-label">Estado</label>
+                                    <select name="status" id="" class="form-select">
+                                        <option selected>------Seleccionar Opción------</option>
+                                        <option value="actived">Activado</option>
+                                        <option value="disabled">Desactivado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Contenido</label>
+                            <textarea type="text" name="text" rows="10" class="form-control" placeholder="Contenido de la noticia/evento"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-success">
+                                Crear
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/new/show" class="link-success">Regresar</a>
+</div>

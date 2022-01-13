@@ -3,29 +3,35 @@
 
 <div class="container p-4">
     <div class="row">
-        <div class="col-md-4 mx-auto">
+        <div class="col-md-8 mx-auto">
             <div class="card">
-                <img class="card-img-top" src="holder.js/100x180/" alt="">
                 <div class="card-body">
+                    <h5 class="card-title text-center"><b>Crear un nuevo Blog</b></h5>
+                    <hr>
                     <form action="/blog/add" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
-                            <label for="" class="form-label">Titulo</label>
-                            <input type="text" name="title" id="" class="form-control" placeholder="Titulo del blog" autofocus>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="" class="form-label">Titulo</label>
+                                    <input type="text" name="title" id="" class="form-control" placeholder="Titulo del blog" autofocus>
+                                </div>
+                                <div class="col">
+                                    <label for="" class="form-label">Photo</label>
+                                    <input type="file" name="image" id="" class="form-control" placeholder="Eleccione un imagen">
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Resumen</label>
-                            <textarea type="text" name="resumen" id="" class="form-control" placeholder="Resumen del contenido" rows="2" ></textarea>
+                            <textarea type="text" name="resumen" onkeyup="countChars(this);" class="form-control" placeholder="Resumen del contenido" maxlength="1000" rows="6" ></textarea>
+                            <p id="charNum">0/100 caracteres</p>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Conternido</label>
-                            <textarea type="text" name="text" id="" class="form-control" placeholder="Contenido del blog" rows="3" ></textarea>
+                            <label for="" class="form-label">Contenido</label>
+                            <textarea type="text" name="text" id="text" class="form-control" placeholder="Contenido del blog" rows="10" ></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Photo</label>
-                            <input type="file" name="image" id="" class="form-control" placeholder="Eleccione un imagen">
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-success btn-block">
+                            <button type="submit" class="btn btn-success">
                               Guardar
                             </button>
                         </div>
@@ -36,3 +42,11 @@
         <h5><a class="btn btn-link" href="/blog/show">Regresar</a></h5>
     </div>
 </div>
+
+<script>
+    function countChars(obj){
+        var maxLength = 1000;
+        var strLength = obj.value.length;
+        document.getElementById("charNum").innerHTML = strLength+'/'+maxLength+' caracteres';
+    }
+</script>

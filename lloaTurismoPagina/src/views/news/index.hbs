@@ -1,0 +1,27 @@
+<div class="container">
+    <h1 class="title text-center">Noticias y Eventos LLOA </h1>
+    <div class="row mx-auto">
+        {{#each news}}
+            <div class="row g-0 bg-light position-relative cardNew mx-auto">
+                <div class="col-md-4 mb-md-0 p-md-4">
+                    <img src="/img/img_uploads/{{image}}" class="img-fluid" alt="">
+                    <br>
+                   
+                </div>
+                <div class="col-md-8 p-4 ps-md-0">
+                    <h5 class="mt-0">{{title_new}}</h5>
+                    <p class="text-truncate" style="width: 100%;">
+                        {{text}}
+                    </p>
+                    <br>
+                    <br>
+                    <p><b>Fecha del evento:</b> {{dateFormat event_date}}</p>
+                    <a href="/new/individual/{{id}}" class="link-success">Leer mas...</a>
+                </div>
+                <p class="m-2">
+                    Created {{timeago create_at}}
+                </p>
+            </div>
+        {{/each}}
+    </div>
+</div>
