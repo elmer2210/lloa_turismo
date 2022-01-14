@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h6 class="my-4"><a href="/gallery/add" class="link-primary">Cargar Imagen Nueva</a></h6>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Edición de Imagen</h5>
+                    <form action="/gallery/edit/{{photo.id}}" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="" class="form-label">Título</label>
+                                    <input type="title" value="{{photo.title}}" name="title" class="form-control" placeholder="Título" autofocus required>
+                                </div>
+                                <div class="col">
+                                    <label for="" class="form-label">Subir Imagen</label>
+                                    <input type="file" name="image" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Descripción</label>
+                            <textarea type="text" name="description" onkeyup="countChars(this);" maxlength="500" class="form-control" rows="6" placeholder="Descripción de la Imagen" >
+                                {{photo.description}}
+                            </textarea>
+                            <p id="charNum">0/500 caracteres</p>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-success">
+                                Actualizar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <img src="/img/img_uploads/{{photo.image}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <h6 class="my-4"><a href="/gallery/show" class="link-success">Regresar</a></h6>
+        </div>
+    </div>
+</div>
+
+<script>
+    function countChars(obj){
+        var maxLength = 500;
+        var strLength = obj.value.length;
+        document.getElementById("charNum").innerHTML = strLength+'/'+maxLength+' caracteres';
+    }
+</script>

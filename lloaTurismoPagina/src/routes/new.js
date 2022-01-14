@@ -101,14 +101,14 @@ router.post('/edit/:id', isLoggedIn, async(req, res)=>{
     const{title_new, event_date, status, text} = req.body;
     const event = await pool.query('SELECT * FROM news WHERE id = ?', [id]);
     if (event.length>0) {
-        const newEvent = {
+        const updateEvent = {
             title_new,
             image: req.file.filename,
             event_date,
             status,
             text
         }
-        await pool.query('UPDATE news SET ? WHERE id = ? ', [newEvent, id]);
+        await pool.query('UPDATE news SET ? WHERE id = ? ', [updateEvent, id]);
 
         fs.unlink( path.join(__dirname, `../public/img/img_uploads/${event[0].image}`))
         .then(()=>{
@@ -120,7 +120,7 @@ router.post('/edit/:id', isLoggedIn, async(req, res)=>{
         req.flash('success', 'Evento/Noticia fue actualizado satisfactoriamente')
         res.redirect('/new/show')
     } else {
-        req.flash('message', 'Error al actualizar el evento7 noticia, vuelva a intentarlo');
+        req.flash('message', 'Error al actualizar el evento/noticia, vuelva a intentarlo');
         res.redirect(`/new/edit/${event[0].id}`)        
     }
 });

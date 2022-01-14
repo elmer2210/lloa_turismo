@@ -1,1 +1,23 @@
-<h1>Galeria</h1>
+<div class="container my-4">
+    <h1 class="text-center display-4 my-4">Galería</h1>
+    <div class="row">
+        {{#each photos}}
+            <div class="col-4 my-4">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#image{{id}}" >
+                    <figure class="figure">
+                        <img src="/img/img_uploads/{{image}}" class="figure-img img-fluid rounded" alt="...">
+                        <figcaption class="figure-caption">{{title}}</figcaption>
+                    </figure>
+                </a>
+                <!-- Modal -->
+                <div class="modal fade" id="image{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <button type="button" class="btn-close m-2" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                    <div class="modal-dialog modal-md modal-dialog-centered">
+                        <img src="/img/img_uploads/{{image}}" class="card-img-top">
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

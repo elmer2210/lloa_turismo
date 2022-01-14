@@ -1,1 +1,114 @@
-<h1>Hola este es el home</h1>
+<link rel="stylesheet" href="/css/index.css">
+
+<h3 class="text-center my-4">Bienvenido a LLoa</h3>
+
+<div class="conteiner mb-5" style="height: ">
+    <div id="carrouselLloa" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="6" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="7" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" data-bs-interval="60">
+            <div class="carousel-item active">
+                <img src="img/photoLloa/alojamiento.jpeg" class="d-block w-100">
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+            <div class="carousel-item">
+                <img src="/img/photoLloa/pueblo.jpeg" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/photoLloa/recreacion.jpeg" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/photoLloa/volcan.jpeg" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/photoLloa/flora.jpeg" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/photoLloa/fauna.jpeg" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/photoLloa/iglesia.jpeg" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/photoLloa/estatua_toro.jpeg" class="d-block w-100">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carrouselLloa" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carrouselLloa" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<div class="backgroudGradient my-4">
+    <br>
+    <h4 class="text-center">Imagenes de LLoa</h4>
+    {{>gallery}}
+    <div class="m-4">
+        <h6><a class="link-secondary" href="/gallery">Ver mas</a></h6>
+    </div>
+    <br>
+</div>
+
+
+<div class="my-4">
+    <br>
+    <h4 class="text-center">Blogs de LLoa</h4>
+    <div class="row">
+        {{#each blogs}}
+            <div class="col-4 m-3">
+                <div class="card">
+                    <img class="card-img-top" src="/img/img_uploads/{{image}}" >
+                    <div class="card-body">
+                        <h4 class="card-title">{{title}}</h4>
+                        <p class="card-text">{{resumen}}</p>
+                    </div>
+                </div>  
+            </div>
+        {{/each}}
+    </div>
+    <div class="m-4">
+        <h6 ><a class="link-success" href="/blog">Ver mas...</a></h6>
+    </div>
+    
+    <br>
+</div>
+
+<div class="backgroudGradient my-4 ">
+    <br>
+    <h4 class="text-center">Noticias y Eventos de LLoa</h4>
+    <div class="row">
+        {{#each news}}
+            <div class="col-4 m-3">
+                <div class="card">
+                    <img class="card-img-top" src="/img/img_uploads/{{image}}" >
+                    <div class="card-body">
+                        <h4 class="card-title">{{title}}</h4>
+                        <p class="card-text text-truncate" style="width: 100%;">{{text}}</p>
+                        <br><br>
+                        <p><b>Fecha Evento:</b> {{dateFormat event_date}} </p>
+                    </div>
+                </div> 
+            </div>
+        {{/each}}
+    </div>
+    <div class="m-4">
+        <h6><a href="/new" class="link-secondary">Ver mas...</a></h6>
+    </div>
+    <br>
+</div>
