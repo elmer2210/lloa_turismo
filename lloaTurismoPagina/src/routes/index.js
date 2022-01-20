@@ -9,4 +9,18 @@ router.get('/',isNotLoggedIn , async(req, res) => {
     res.render('components/index', {blogs, news});
 })
 
+//post 
+router.post('/addComent', isNotLoggedIn, async(req, res)=>{
+    const {names, email, phone, mensaje} = req.body;
+    const newMenssage = {
+        names,
+        email, 
+        phone,
+        mensaje,
+        status: 'recivido'
+    }
+    await pool.query('INSERT INTO contact_us SET ?', [newMenssage]);
+    res.redirect('/');
+});
+
 module.exports = router;

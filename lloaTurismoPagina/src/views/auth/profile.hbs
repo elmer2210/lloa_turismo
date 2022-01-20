@@ -1,8 +1,20 @@
 <div class="row">
     <div class="col-md-4 mx-auto">
-        <div class="card ">
+        <div class="card">
             <div class="card-body text-center">
-                <h3>Welcome {{user.first_name}} {{user.last_name}}</h3>
+                <img src="img/user.png" class="card-img-top rounded-circle my-4" 
+                style="border: 1px solid black; height: 200px; width: 200px;">
+                <h3 class="card-title">{{user.user_name}}</h3>
+                <h5><b>Nombre y Apellido:</b> {{user.first_name}} {{user.last_name}}</h5>
+                <h5><b>Email:</b> {{user.user_email}}</h5>
+                <br><br>
+                <a href="/menssage" class="btn position-relative">
+                    <i class="fas fa-comment-dots fa-2x"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{menssages.numberMensage}}
+                        <span class="visually-hidden">Mensajes no leidos</span>
+                    </span>
+                </a>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 {{#if user}}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid m-8">
-            <a class="navbar-brand" href="/profile">GAP LLOA</a>
+            <a class="navbar-brand" href="/profile">{{user.first_name}} {{user.last_name}}</a>
             <div class="collapse navbar-collapse d-flex justify-content-end mx-5" id="navbarNavDropdown">
                 <ul class=" nav navbar-nav d-flex justify-content-around mx-5" style="width: 55%;">
                     <li class="nav-item">
@@ -9,6 +9,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/gallery/show">Galeria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/video/show">Videos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/new/show">Eventos</a>
@@ -19,7 +22,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a href="/profile" class="dropdown-item" ><i class="fas fa-user-alt"></i> Perfil </a></li>
-                            <li><a href="/logaut" class="dropdown-item" ><i class="fas fa-sign-out-alt"></i> Cerrar Sección</a></li>
+                            <li><a href="/signup"  class="dropdown-item" ><i class="fas fa-user-plus"></i> Crear Usuario</a></li>
+                            <li><a href="/logaut"  class="dropdown-item" ><i class="fas fa-sign-out-alt"></i> Cerrar Sección</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -38,6 +42,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/gallery">Galeria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/video">Videos LLoa</a>
                     </li>
                     <li class="nav-item">
                          <a class="nav-link" href="/new">Noticias</a>

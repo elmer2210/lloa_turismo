@@ -1,0 +1,104 @@
+<div class="container">
+    <h2 class="text-center my-4">Mensajes</h2>
+
+    <h5>Mensajes Recividos</h5>
+    <hr>
+    <div class="table-responsive">
+        <table class="table">
+             <thead>
+                <th scope="col">Nombres</th>
+                <th scope="col">Correo Electrónico</th>
+                <th scope="col"># telefónico</th>
+                <th scope="col">status</th>
+                <th scope="col"></th>
+            </thead>
+            <tbody>
+                {{#each menssages}}
+                    <tr>
+                        <th >{{names}}</th>
+                        <td>{{email}}</td>
+                        <td>{{phone}}</td>
+                        <td>{{statusSms status}}</td>
+                        <td>
+                            <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#menssage{{id}}"><i class="fas fa-eye"></i></a>
+                            <a href="/menssage/statusChange/{{id}}" class="btn btn-warning">Marcar como Leido</a>
+                        </td>
+                    </tr>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="menssage{{id}}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{names}}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><b>Correo electrónico:</b> {{email}}</p>
+                                <p><b>Numero Telefónico:</b> {{phone}}</p>
+                                <p><b>Mensaje:</b></p>
+                                <p>{{mensaje}}</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                {{else}}
+                    <tr>
+                        No ha mensajes pendientes
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <h5 class="my-4">Mensajes Leidos</h5>
+    <hr>
+    <div class="table-responsive">
+        <table class="table">
+             <thead>
+                <th scope="col">Nombres</th>
+                <th scope="col">Correo Electrónico</th>
+                <th scope="col"># telefónico</th>
+                <th scope="col">status</th>
+                <th scope="col"></th>
+            </thead>
+            <tbody>
+                {{#each menssageReading}}
+                    <tr>
+                        <th >{{names}}</th>
+                        <td>{{email}}</td>
+                        <td>{{phone}}</td>
+                        <td>{{statusSms status}}</td>
+                        <td>
+                            <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#menssage{{id}}"><i class="fas fa-eye"></i></a>
+                            <a href="/menssage/delete/{{id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                            <a href="/menssage/statusChange/{{id}}" class="btn btn-warning">Marcar como Recivido</a>
+                        </td>
+                    </tr>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="menssage{{id}}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{names}}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><b>Correo electrónico:</b> {{email}}</p>
+                                <p><b>Numero Telefónico:</b> {{phone}}</p>
+                                <p><b>Mensaje:</b></p>
+                                <p>{{mensaje}}</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                {{else}}
+                    <tr>
+                        No ha mensajes leídos
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

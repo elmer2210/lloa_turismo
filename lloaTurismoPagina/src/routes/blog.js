@@ -37,8 +37,8 @@ router.get('/delete/:id', isLoggedIn, async(req, res)=>{
     const {id} = req.params;
     const blog = await pool.query('SELECT * FROM blog WHERE id =?', [id])
     if (blog.length > 0) {
-        if (blog[0].image !== null) {
-            fs.unlink( path.join(__dirname, `../public/img/img_uploads/${blog[0].image}`))
+        if (blog[0].file !== null) {
+            fs.unlink( path.join(__dirname, `../public/img/img_uploads/${blog[0].file}`))
                 .then(()=>{
                     console.log('images was removed')
                 }).catch(err=>{
@@ -61,7 +61,7 @@ router.post('/add', isLoggedIn, async(req, res)=>{
         title,
         resumen,
         text,
-        image:req.file.filename,
+        file:req.file.filename,
         create_for:req.user.id
     };
     await pool.query('INSERT INTO blog set ?', [newBlog])
@@ -72,15 +72,15 @@ router.post('/add', isLoggedIn, async(req, res)=>{
 router.post('/edit/:id', isLoggedIn, async(req, res)=>{
     const {id} = req.params;
     const blog = await pool.query('SELECT * FROM blog WHERE id = ?',[id] );
-    const {title, resumen, text, image} = req.body;
+    const {title, resumen, text} = req.body;
         const updateBlog = {
             title,
             resumen,
             text,
-            image:req.file.filename,
+            file:req.file.filename,
         };
-    if (blog[0].image !== null) {
-        fs.unlink( path.join(__dirname, `../public/img/img_uploads/${blog[0].image}`))
+    if (blog[0].file !== null) {
+        fs.unlink( path.join(__dirname, `../public/img/img_uploads/${blog[0].file}`))
             .then(()=>{
                 console.log('images was removed')
             }).catch(err=>{

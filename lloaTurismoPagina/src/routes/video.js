@@ -7,87 +7,86 @@ const path = require('path');
 const {isLoggedIn, isNotLoggedIn} = require('../lib/auth')
 
 //routes get
-
 router.get('/', isNotLoggedIn, async(req, res)=>{
-    const photos = await pool.query('SELECT * FROM gallery ORDER BY create_at DESC');
-    res.render('gallery/index', {photos});
-});
+    const videos = await pool.query('SELECT * FROM videos ORDER BY create_at DESC');
+    res.render('videos/index', {videos});
+})
 
 router.get('/show', isLoggedIn, async(req, res)=>{
     const {id} = req.user;
-    const photos = await pool.query('SELECT * FROM gallery WHERE create_for = ? ORDER BY create_at DESC', [id]);
-    res.render('gallery/show', {photos})
+    const videos = await pool.query('SELECT * FROM videos WHERE create_for = ? ORDER BY create_at DESC', [id]);
+    res.render('videos/show', {videos})
 })
 
 router.get('/add', isLoggedIn, async(req, res)=>{
-    res.render('gallery/create')
+    res.render('videos/create')
 });
 
 router.get('/edit/:id', isLoggedIn, async(req, res)=>{
     const {id} = req.params;
-    const photo = await pool.query('SELECT * FROM gallery WHERE id = ?', [id]);
-    res.render('gallery/edit', {photo: photo[0]})
+    const video = await pool.query('SELECT * FROM videos WHERE id = ?', [id]);
+    res.render('videos/edit', {video: video[0]})
 });
 
 router.get('/delete/:id', isLoggedIn, async(req, res)=>{
     const {id} = req.params;
-    const photo = await  pool.query('SELECT * FROM gallery WHERE id = ?', [id]);
-    if (photo.length>0) {
-        await pool.query('DELETE FROM gallery WHERE id = ?', [id]);
+    const video = await  pool.query('SELECT * FROM videos WHERE id = ?', [id]);
+    if (video.length>0) {
+        await pool.query('DELETE FROM videos WHERE id = ?', [id]);
 
-        fs.unlink( path.join(__dirname, `../public/img/img_uploads/${photo[0].file}`))
+        fs.unlink( path.join(__dirname, `../public/img/img_uploads/${video[0].file}`))
         .then(()=>{
             console.log('images was removed')
         }).catch(err=>{
             console.error('Something wrong happened removing the file', err)
         });
 
-        req.flash('success', 'Imagen Eliminada correptamente');
-        res.redirect('/gallery/show')
+        req.flash('success', 'Video Eliminado correptamente');
+        res.redirect('/video/show')
     } else {
         req.flash('message', 'No se pudo eliminar la imagen vuelva a intentarlo');
-        res.redirect('gallery/show')
+        res.redirect('video/show')
     }
 });
 
 //routes post
 router.post('/add', isLoggedIn, async(req, res)=>{
     const {title, description} = req.body;
-    const newPhoto = {
+    const newVideo = {
         title,
         description,
         file: req.file.filename,
         create_for : req.user.id
     };
-    await pool.query('INSERT INTO gallery SET ?', [newPhoto]);
-    req.flash('success', 'Imagen cargada con exito');
-    res.redirect('/gallery/show')
+    await pool.query('INSERT INTO videos SET ?', [newVideo]);
+    req.flash('success', 'Video cargado con exito');
+    res.redirect('/video/show')
 });
 
 router.post('/edit/:id', isLoggedIn, async(req, res)=>{
     const {id} = req.params;
     const {title, description} = req.body;
-    const photo = await pool.query('SELECT * FROM gallery WHERE id = ?', [id]);
-    if (photo.length>0) {
-        const updatePhoto = {
+    const video = await pool.query('SELECT * FROM videos WHERE id = ?', [id]);
+    if (video.length>0) {
+        const updateVideo = {
             title,
             description,
             file: req.file.filename,
         };
-        await pool.query('UPDATE gallery SET ? WHERE id = ?', [ updatePhoto,id]);
+        await pool.query('UPDATE videos SET ? WHERE id = ?', [ updateVideo,id]);
 
-        fs.unlink( path.join(__dirname, `../public/img/img_uploads/${photo[0].file}`))
+        fs.unlink( path.join(__dirname, `../public/img/img_uploads/${video[0].file}`))
         .then(()=>{
             console.log('images was removed')
         }).catch(err=>{
             console.error('Something wrong happened removing the file', err)
         });
 
-        req.flash('success', 'Registro de imagen actualizada correctamente');
-        res.redirect('/gallery/show');
+        req.flash('success', 'Registro del video actualizado correctamente');
+        res.redirect('/video/show');
     } else {
         req.flash('message', 'Error al actualizar el registro de la imagen, vuelva a intentarlo');
-        res.redirect(`/gallery/edit/${id}`)
+        res.redirect(`/video/edit/${id}`)
     }
 });
 

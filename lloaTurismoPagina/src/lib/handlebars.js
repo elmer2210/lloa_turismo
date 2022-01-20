@@ -36,4 +36,12 @@ handlebars.registerHelper('dateFormat', (value)=>{
     }
 })
 
+handlebars.registerHelper('statusSms', (value)=>{
+    if (value === "recivido") {
+        return 'Recivido'
+    } else {
+        return 'Leido'
+    }
+})
+
 module.exports = helpers, handlebars;

@@ -5,7 +5,8 @@ const router = express.Router();
 
 const passport = require('passport')
 
-const {isLoggedIn, isNotLoggedIn} = require('../lib/auth')
+const {isLoggedIn, isNotLoggedIn} = require('../lib/auth');
+const pool = require('../database');
 
 //Login
 router.get('/signin', isNotLoggedIn, (req, res) =>{
@@ -21,7 +22,7 @@ router.post('/signin', isNotLoggedIn, (req, res, next)=>{
 })
 
 //Register
-router.get('/signup', isNotLoggedIn, (req, res)=>{
+router.get('/signup', isLoggedIn, (req, res)=>{
     res.render('auth/register')
 })
 
@@ -34,8 +35,9 @@ router.post('/signup', isNotLoggedIn,
 )
 
 //profile
-router.get('/profile',isLoggedIn,(req, res)=>{
-    res.render('auth/profile')
+router.get('/profile',isLoggedIn,async(req, res)=>{
+    const menssages = await pool.query('SELECT COUNT(*) AS numberMensage FROM contact_us WHERE status = "recivido"');
+    res.render('auth/profile', {menssages:menssages[0]})
 })
 
 //logaut

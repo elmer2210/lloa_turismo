@@ -5,11 +5,12 @@
                 <div class="card" style="width: 25rem; background:transparent;border-style: none; text-align: center;">
                         <div class="card-body">
                     <h4>Contactanos</h4>
-                        <form class="">
-                            <input type="text" class="form-control form-control-sm"  name="Nombre" placeholder="Nombre"><br/>
-                            <input type="text" class="form-control form-control-sm" name="Correo" placeholder="Correo"><br/>
-                            <input type="text" class="form-control form-control-sm" name="Telefono" placeholder="Telefono"><br/>
-                            <textarea name="mensaje" class="form-control form-control-sm" placeholder="Escriba aquí su mensaje"></textarea><br/>
+                        <form action="/addComent" method="POST">
+                            <input type="text" class="form-control form-control-sm"  name="names" placeholder="Nombre"><br/>
+                            <input type="text" class="form-control form-control-sm" name="email" placeholder="Correo"><br/>
+                            <input type="text" class="form-control form-control-sm" name="phone" placeholder="Telefono" maxlength="10"><br/>
+                            <textarea name="mensaje" onkeyup="countChars(this);" class="form-control form-control-sm" placeholder="Escriba aquí su mensaje" maxlength="500" rows="4"></textarea><br/>
+                            <p id="charNum">0/500 caracteres</p>
                             <button class="btn btn-secondary">SUBMIT</button>
                         </form>
                     </div>
@@ -43,4 +44,11 @@
         </div>
     </div>
 </div>
+<script>
+    function countChars(obj){
+        var maxLength = 500;
+        var strLength = obj.value.length;
+        document.getElementById("charNum").innerHTML = strLength+'/'+maxLength+' caracteres';
+    }
+</script>
 

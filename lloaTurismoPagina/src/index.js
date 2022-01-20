@@ -61,14 +61,14 @@ app.use(multer({
     storage:storage,
     fileFilter:(req, file, callback)=>{
         let ext = path.extname(file.originalname);
-        if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
-            return callback(new Error('Only images are allowed'))
+        if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg' && ext !== '.mp4') {
+            return callback(new Error('Only images and videos are allowed'))
         } else {
             callback(null, true)
         }
     },
     dest: path.join(__dirname, 'public/img/img_uploads')
-}).single('image'));
+}).single('file'));
 
 //Glovals Variables
 app.use((req, res, next)=>{
@@ -84,6 +84,8 @@ app.use(require('./routes/authentication'));
 app.use('/gallery',require('./routes/gallery'));
 app.use('/blog', require('./routes/blog'));
 app.use('/new', require('./routes/new'));
+app.use('/video', require('./routes/video'));
+app.use('/menssage', require('./routes/message'));
 
 //Static File
 app.use(express.static(path.join(__dirname, 'public')));

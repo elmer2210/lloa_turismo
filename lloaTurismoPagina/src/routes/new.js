@@ -37,8 +37,8 @@ router.get('/delete/:id', isLoggedIn, async(req, res)=>{
     const {id} = req.params;
     const blog = await pool.query('SELECT * FROM news WHERE id =?', [id])
     if (blog.length > 0) {
-        if (blog[0].image !== null) {
-            fs.unlink( path.join(__dirname, `../public/img/img_uploads/${blog[0].image}`))
+        if (blog[0].file !== null) {
+            fs.unlink( path.join(__dirname, `../public/img/img_uploads/${blog[0].file}`))
                 .then(()=>{
                     console.log('images was removed')
                 }).catch(err=>{
@@ -46,7 +46,7 @@ router.get('/delete/:id', isLoggedIn, async(req, res)=>{
                 })
         };
 
-        const dlBlog = await pool.query('DELETE FROM blog WHERE id = ?', [id]);
+        await pool.query('DELETE FROM blog WHERE id = ?', [id]);
         req.flash('success', 'Evento/notica eliminado satisfactoriamente');
         res.redirect('/blog/show')
     } else {
@@ -85,7 +85,7 @@ router.post('/add', isLoggedIn, async(req, res)=>{
     const {title_new, event_date, text, status} = req.body;
     const newEvent = {
         title_new,
-        image:req.file.filename,
+        file:req.file.filename,
         event_date,
         status,
         text,
@@ -103,14 +103,14 @@ router.post('/edit/:id', isLoggedIn, async(req, res)=>{
     if (event.length>0) {
         const updateEvent = {
             title_new,
-            image: req.file.filename,
+            file: req.file.filename,
             event_date,
             status,
             text
         }
         await pool.query('UPDATE news SET ? WHERE id = ? ', [updateEvent, id]);
 
-        fs.unlink( path.join(__dirname, `../public/img/img_uploads/${event[0].image}`))
+        fs.unlink( path.join(__dirname, `../public/img/img_uploads/${event[0].file}`))
         .then(()=>{
             console.log('images was removed')
         }).catch(err=>{

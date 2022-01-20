@@ -10,7 +10,7 @@
                 {{#isActived status}}{{/isActived}}
                 <br>
                 <div class="col-md-4 mb-md-0 p-md-4">
-                    <img src="/img/img_uploads/{{image}}" class="img-fluid" alt="">
+                    <img src="/img/img_uploads/{{file}}" class="img-fluid" alt="">
                     <br>
                    
                 </div>
@@ -44,6 +44,13 @@
                         </a>
                     </div>
                 </div>
+            </div>
+        {{else}}
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">No existe registro aún</h4>
+                </div>
+                <a href="/new/add" class="btn btn-link">Crear una noticia</a>
             </div>
         {{/each}}
     </div>

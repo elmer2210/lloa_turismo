@@ -6,7 +6,7 @@
             <div class="col-4">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#image{{id}}" >
                     <figure class="figure">
-                        <img src="/img/img_uploads/{{image}}" class="figure-img img-fluid rounded" alt="...">
+                        <img src="/img/img_uploads/{{file}}" class="figure-img img-fluid rounded" alt="...">
                         <figcaption class="figure-caption">{{title}}</figcaption>
                     </figure>
                     
@@ -26,11 +26,18 @@
                                 </a>
                             </div>
                             <div class="modal-body">
-                                <img src="/img/img_uploads/{{image}}" class="card-img-top">
+                                <img src="/img/img_uploads/{{file}}" class="card-img-top">
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        {{else}}
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">No existe registro aún</h4>
+                </div>
+                <a href="/gallery/add" class="btn btn-link">Subir una foto</a>
             </div>
         {{/each}}
     </div>
