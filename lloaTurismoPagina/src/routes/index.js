@@ -5,8 +5,9 @@ const pool = require('../database')
 const {isNotLoggedIn} = require('../lib/auth')
 router.get('/',isNotLoggedIn , async(req, res) => {
     const blogs = await pool.query('SELECT * FROM blog ORDER BY `create_at` DESC LIMIT 3');
-    const news = await pool.query('SELECT * FROM news ORDER BY `create_at`DESC LIMIT 3')
-    res.render('components/index', {blogs, news});
+    const news = await pool.query('SELECT * FROM news ORDER BY `create_at` DESC LIMIT 3');
+    const videos = await pool.query('SELECT * FROM videos ORDER BY `create_at` DESC LIMIT 3 ');
+    res.render('components/index', {blogs, news, videos});
 })
 
 //post 

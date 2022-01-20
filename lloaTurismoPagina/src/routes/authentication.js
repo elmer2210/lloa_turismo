@@ -22,7 +22,7 @@ router.post('/signin', isNotLoggedIn, (req, res, next)=>{
 })
 
 //Register
-router.get('/signup', isLoggedIn, (req, res)=>{
+router.get('/signup', (req, res)=>{
     res.render('auth/register')
 })
 

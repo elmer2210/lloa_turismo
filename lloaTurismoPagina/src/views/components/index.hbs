@@ -68,6 +68,28 @@
 
 <div class="my-4">
     <br>
+    <h4 class="text-center">Videos LLoa</h4>
+    <div class="row">
+        {{#each videos}}
+            <div class="col-4 m-3">
+                <div class="card">
+                    <video src="/img/img_uploads/{{file}}" width="100%" loop controls></video>
+                    <div class="card-body">
+                        <h4 class="card-title">{{title}}</h4>
+                        <p class="card-text text-truncate" style="width: 100%;">{{description}}</p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    <div class="m-4">
+        <h6 ><a class="link-success" href="/video">Ver mas...</a></h6>
+    </div>
+    <br>
+</div>
+
+<div class="backgroudGradient my-4">
+    <br>
     <h4 class="text-center">Blogs de LLoa</h4>
     <div class="row">
         {{#each blogs}}
@@ -83,13 +105,12 @@
         {{/each}}
     </div>
     <div class="m-4">
-        <h6 ><a class="link-success" href="/blog">Ver mas...</a></h6>
+        <h6 ><a class="link-secondary" href="/blog">Ver mas...</a></h6>
     </div>
-    
     <br>
 </div>
 
-<div class="backgroudGradient my-4 ">
+<div class="my-4">
     <br>
     <h4 class="text-center">Noticias y Eventos de LLoa</h4>
     <div class="row">
